@@ -1,5 +1,4 @@
 ---
 collections:
-  - name: sabre1041.eda
-    version: 1.0.0
-    type: galaxy
+  - name: kubernetes.core
+    version: 2.4.0
