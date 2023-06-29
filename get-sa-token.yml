@@ -2,6 +2,11 @@
   hosts: localhost
   connection: local
   tasks:
+    - name: Display all variables/facts known for a host
+      ansible.builtin.debug:
+        var: hostvars[inventory_hostname]
+     
+          
     - name: Debug information
       ansible.builtin.debug:
         msg: "ServiceAccount in namespace '{{ ansible_eda.event.resource.metadata.namespace }}' with name '{{ ansible_eda.event.resource.metadata.name }}‘ {{ ansible_eda.event.type | capitalize }}’ "
