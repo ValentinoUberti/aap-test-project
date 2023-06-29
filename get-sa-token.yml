@@ -9,10 +9,10 @@
           
     - name: Debug information
       ansible.builtin.debug:
-        msg: "ServiceAccount in namespace '{{ ansible_eda.event.resource.metadata.namespace }}' with name '{{ ansible_eda.event.resource.metadata.name }}‘ {{ ansible_eda.event.type | capitalize }}’ "
+        msg: "ServiceAccount in namespace '{{ namespace }}' with name '{{ sa_name }}‘"
 
-    - name: Creating token for SA '{{ ansible_eda.event.resource.metadata.name }}‘
-      ansible.builtin.command: oc create token -n {{ ansible_eda.event.resource.metadata.namespace }} {{ ansible_eda.event.resource.metadata.name }}
+    - name: Creating token for SA '{{ sa_name }}‘
+      ansible.builtin.command: oc create token -n {{ namespace }} {{ sa_name }}
       register: output
 
     - name: Show SA token
