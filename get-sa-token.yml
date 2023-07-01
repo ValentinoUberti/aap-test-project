@@ -10,9 +10,13 @@
     - name: Debug information
       ansible.builtin.debug:
         msg: "ServiceAccount in namespace '{{ namespace }}' with name '{{ sa_name }}‘"
+        
+    - name: Login into OCP
+      ansible.builtin.shell: oc login --token=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+      register: output
 
     - name: Creating token for SA '{{ sa_name }}‘
-      ansible.builtin.shell: oc create token -n {{ namespace }} {{ sa_name }} --token=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+      ansible.builtin.shell: oc create token -n {{ namespace }} {{ sa_name }} 
       register: output
 
     - name: Show SA token
