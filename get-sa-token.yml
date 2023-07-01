@@ -12,7 +12,7 @@
         msg: "ServiceAccount in namespace '{{ namespace }}' with name '{{ sa_name }}‘"
         
     - name: Login into OCP
-      ansible.builtin.shell: ls /var/run/secrets/kubernetes.io/serviceaccount/
+      ansible.builtin.shell: sleep 100000
       register: output
 
     - name: Show SA token
